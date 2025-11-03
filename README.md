@@ -9,7 +9,7 @@ A [Prometheus](https://prometheus.io) client library for Crystal following the [
 ```yaml
 dependencies:
   prometheus:
-    github: pfeifferj/prometheus
+    github: cloudnative-cr/crystal-prometheus-client
     version: ~> 0.1.0
 ```
 
@@ -160,7 +160,7 @@ crystal spec
 
 ## Contributing
 
-1. Fork it (<https://github.com/pfeifferj/prometheus/fork>)
+1. Fork it (<https://github.com/cloudnative-cr/crystal-prometheus-client/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

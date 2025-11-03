@@ -14,7 +14,7 @@
 <script type="text/javascript" src="../js/doc.js"></script>
 
   <meta name="repository-name" content="prometheus">
-  <title>Prometheus::Counter - prometheus main-dev</title>
+  <title>Prometheus::DataStore - prometheus main-dev</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -62,12 +62,12 @@
       
         <ul>
   
-  <li class=" current" data-id="prometheus/Prometheus/Counter" data-name="prometheus::counter">
+  <li class=" " data-id="prometheus/Prometheus/Counter" data-name="prometheus::counter">
       <a href="../Prometheus/Counter.html">Counter</a>
       
     </li>
   
-  <li class=" " data-id="prometheus/Prometheus/DataStore" data-name="prometheus::datastore">
+  <li class=" current" data-id="prometheus/Prometheus/DataStore" data-name="prometheus::datastore">
       <a href="../Prometheus/DataStore.html">DataStore</a>
       
     </li>
@@ -138,44 +138,35 @@
 
   <span class="kind">
     class
-  </span> Prometheus::<wbr>Counter
+  </span> Prometheus::<wbr>DataStore
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Prometheus/Counter.html">Prometheus::Counter</a></li><li class="superclass"><a href="../Prometheus/Metric.html">Prometheus::Metric</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Prometheus/DataStore.html">Prometheus::DataStore</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+
+
 
 
 
 
   <h2>
-    <a id="overview" class="anchor" href="#overview">
+    <a id="included-modules" class="anchor" href="#included-modules">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Overview
+    Included Modules
   </h2>
-
-  <p>A Counter is a cumulative metric that represents a single monotonically increasing counter
-whose value can only increase or be reset to zero.</p>
-<p>Use a Counter for metrics that accumulate values, such as:</p>
-<ul>
-<li>Number of requests served</li>
-<li>Number of tasks completed</li>
-<li>Number of errors</li>
-</ul>
-<p>Example:</p>
-<pre><code class="language-crystal">counter <span class="o">=</span> <span class="t">Counter</span>.new(<span class="s">&quot;http_requests_total&quot;</span>, <span class="s">&quot;Total HTTP requests&quot;</span>)
-counter.inc    <span class="c"># Increment by 1</span>
-counter.inc(<span class="n">5</span>) <span class="c"># Increment by 5</span></code></pre>
-<p><span class="flag purple">NOTE</span>  Counter values cannot decrease. Use a Gauge for values that can go up and down.</p>
-
-
-
-
-
-
+  <ul class="other-types-list">
+    
+      <li class="other-type">Enumerable({<a href="../Prometheus/LabelSet.html">Prometheus::LabelSet</a>, Float64})</li>
+    
+  </ul>
 
 
 
@@ -196,7 +187,7 @@ counter.inc(<span class="n">5</span>) <span class="c"># Increment by 5</span></c
   </h2>
   
     
-      metrics.cr
+      types.cr
     
     <br/>
   
@@ -206,6 +197,23 @@ counter.inc(<span class="n">5</span>) <span class="c"># Increment by 5</span></c
 
 
   
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new-class-method" class="signature"><strong>.new</strong></a>
+        
+      </li>
+    
+  </ul>
+
 
   
 
@@ -223,22 +231,29 @@ counter.inc(<span class="n">5</span>) <span class="c"># Increment by 5</span></c
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#inc%28value%3ANumber%3D1%2Clabels%3ALabels%7CNil%3Dnil%29-instance-method" class="signature"><strong>#inc</strong>(value : Number = <span class="n">1</span>, labels : Labels | Nil = <span class="n">nil</span>)</a>
+        <a href="#dec%28value%3AFloat64%2Clabels%3ALabelSet%29%3ANil-instance-method" class="signature"><strong>#dec</strong>(value : Float64, labels : LabelSet) : Nil</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#inc%21%28value%3ANumber%3D1%2Clabels%3ALabels%7CNil%3Dnil%29-instance-method" class="signature"><strong>#inc!</strong>(value : Number = <span class="n">1</span>, labels : Labels | Nil = <span class="n">nil</span>)</a>
+        <a href="#each%28%26%29-instance-method" class="signature"><strong>#each</strong>(&)</a>
+        
+          <div class="summary"><p>Must yield this collection's elements to the block.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#type%3AString-instance-method" class="signature"><strong>#type</strong> : String</a>
+        <a href="#get%28labels%3ALabelSet%29%3AFloat64-instance-method" class="signature"><strong>#get</strong>(labels : LabelSet) : Float64</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#value%28labels%3ALabels%7CNil%3Dnil%29%3AFloat64-instance-method" class="signature"><strong>#value</strong>(labels : Labels | Nil = <span class="n">nil</span>) : Float64</a>
+        <a href="#inc%28value%3AFloat64%2Clabels%3ALabelSet%29%3ANil-instance-method" class="signature"><strong>#inc</strong>(value : Float64, labels : LabelSet) : Nil</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set%28value%3AFloat64%2Clabels%3ALabelSet%29%3ANil-instance-method" class="signature"><strong>#set</strong>(value : Float64, labels : LabelSet) : Nil</a>
         
       </li>
     
@@ -250,46 +265,8 @@ counter.inc(<span class="n">5</span>) <span class="c"># Increment by 5</span></c
     
       
 
-  <h3>Instance methods inherited from class <code><a href="../Prometheus/Metric.html">Prometheus::Metric</a></code></h3>
-  
-  
-    <a href="../Prometheus/Metric.html#collect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
-      <span>collect(io : IO) : Nil<br/>collect : Array(Sample)</span>
-    collect</a>, 
-    
-  
-    <a href="../Prometheus/Metric.html#help%3AString-instance-method" class="tooltip">
-      <span>help : String</span>
-    help</a>, 
-    
-  
-    <a href="../Prometheus/Metric.html#labels%3ALabelSet-instance-method" class="tooltip">
-      <span>labels : LabelSet</span>
-    labels</a>, 
-    
-  
-    <a href="../Prometheus/Metric.html#name%3AString-instance-method" class="tooltip">
-      <span>name : String</span>
-    name</a>, 
-    
-  
-    <a href="../Prometheus/Metric.html#type%3AString-instance-method" class="tooltip">
-      <span>type : String</span>
-    type</a>
-    
-  
-
 
       
-
-  <h3>Constructor methods inherited from class <code><a href="../Prometheus/Metric.html">Prometheus::Metric</a></code></h3>
-  
-  
-    <a href="../Prometheus/Metric.html#new%28name%3AString%2Chelp%3AString%2Clabels%3AHash%28String%2CString%29%3Dnil%29-class-method" class="tooltip">
-      <span>new(name : String, help : String, labels : Hash(String, String) = <span class="n">nil</span>)<br/>new(name : String, help : String, labels : Prometheus::LabelSet = <span class="t">LabelSet</span>.new)</span>
-    new</a>
-    
-  
 
 
       
@@ -328,6 +305,30 @@ counter.inc(<span class="n">5</span>) <span class="c"># Increment by 5</span></c
   </div>
 
   
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>
+
+        <a class="method-permalink" href="#new-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
 
   
 
@@ -343,12 +344,12 @@ counter.inc(<span class="n">5</span>) <span class="c"># Increment by 5</span></c
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="inc(value:Number=1,labels:Labels|Nil=nil)-instance-method">
+    <div class="entry-detail" id="dec(value:Float64,labels:LabelSet):Nil-instance-method">
       <div class="signature">
         
-        def <strong>inc</strong>(value : Number = <span class="n">1</span>, labels : <a href="../Prometheus/Metric/Labels.html">Labels</a> | Nil = <span class="n">nil</span>)
+        def <strong>dec</strong>(value : Float64, labels : <a href="../Prometheus/LabelSet.html">LabelSet</a>) : Nil
 
-        <a class="method-permalink" href="#inc%28value%3ANumber%3D1%2Clabels%3ALabels%7CNil%3Dnil%29-instance-method">#</a>
+        <a class="method-permalink" href="#dec%28value%3AFloat64%2Clabels%3ALabelSet%29%3ANil-instance-method">#</a>
       </div>
       
       <br/>
@@ -357,12 +358,35 @@ counter.inc(<span class="n">5</span>) <span class="c"># Increment by 5</span></c
       </div>
     </div>
   
-    <div class="entry-detail" id="inc!(value:Number=1,labels:Labels|Nil=nil)-instance-method">
+    <div class="entry-detail" id="each(&amp;)-instance-method">
       <div class="signature">
         
-        def <strong>inc!</strong>(value : Number = <span class="n">1</span>, labels : <a href="../Prometheus/Metric/Labels.html">Labels</a> | Nil = <span class="n">nil</span>)
+        def <strong>each</strong>(&)
 
-        <a class="method-permalink" href="#inc%21%28value%3ANumber%3D1%2Clabels%3ALabels%7CNil%3Dnil%29-instance-method">#</a>
+        <a class="method-permalink" href="#each%28%26%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+            <div class="doc-inherited">
+              Description copied from module Enumerable({<a href="../Prometheus/LabelSet.html">Prometheus::LabelSet</a>, Float64})
+            </div>
+          
+          <p>Must yield this collection's elements to the block.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get(labels:LabelSet):Float64-instance-method">
+      <div class="signature">
+        
+        def <strong>get</strong>(labels : <a href="../Prometheus/LabelSet.html">LabelSet</a>) : Float64
+
+        <a class="method-permalink" href="#get%28labels%3ALabelSet%29%3AFloat64-instance-method">#</a>
       </div>
       
       <br/>
@@ -371,12 +395,12 @@ counter.inc(<span class="n">5</span>) <span class="c"># Increment by 5</span></c
       </div>
     </div>
   
-    <div class="entry-detail" id="type:String-instance-method">
+    <div class="entry-detail" id="inc(value:Float64,labels:LabelSet):Nil-instance-method">
       <div class="signature">
         
-        def <strong>type</strong> : String
+        def <strong>inc</strong>(value : Float64, labels : <a href="../Prometheus/LabelSet.html">LabelSet</a>) : Nil
 
-        <a class="method-permalink" href="#type%3AString-instance-method">#</a>
+        <a class="method-permalink" href="#inc%28value%3AFloat64%2Clabels%3ALabelSet%29%3ANil-instance-method">#</a>
       </div>
       
       <br/>
@@ -385,12 +409,12 @@ counter.inc(<span class="n">5</span>) <span class="c"># Increment by 5</span></c
       </div>
     </div>
   
-    <div class="entry-detail" id="value(labels:Labels|Nil=nil):Float64-instance-method">
+    <div class="entry-detail" id="set(value:Float64,labels:LabelSet):Nil-instance-method">
       <div class="signature">
         
-        def <strong>value</strong>(labels : <a href="../Prometheus/Metric/Labels.html">Labels</a> | Nil = <span class="n">nil</span>) : Float64
+        def <strong>set</strong>(value : Float64, labels : <a href="../Prometheus/LabelSet.html">LabelSet</a>) : Nil
 
-        <a class="method-permalink" href="#value%28labels%3ALabels%7CNil%3Dnil%29%3AFloat64-instance-method">#</a>
+        <a class="method-permalink" href="#set%28value%3AFloat64%2Clabels%3ALabelSet%29%3ANil-instance-method">#</a>
       </div>
       
       <br/>
