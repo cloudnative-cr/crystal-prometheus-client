@@ -46,14 +46,16 @@ jobs:
       - name: Cache shards
         uses: actions/cache@v4
         with:
-          path: lib
+          path: |
+            lib
+            bin
           key: shards-${{ hashFiles('shard.lock') }}
 
       - name: Install dependencies
         run: shards install
 
       - name: Run Ameba
-        run: bin/ameba
+        run: ./bin/ameba
 
   format:
     runs-on: ubuntu-latest

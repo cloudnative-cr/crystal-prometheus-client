@@ -151,7 +151,7 @@ module Prometheus
       @mutex.synchronize do
         @count.collect io
         @sum.collect io
-        @buckets.each do |upper_bound, bucket|
+        @buckets.each do |_upper_bound, bucket|
           @label_sets.each do |labels|
             bucket.get! labels
           end
@@ -166,7 +166,7 @@ module Prometheus
           .concat(@count.collect)
           .concat(@sum.collect)
 
-        @buckets.each do |upper_bound, bucket|
+        @buckets.each do |_upper_bound, bucket|
           @label_sets.each do |labels|
             bucket.get! labels
           end
