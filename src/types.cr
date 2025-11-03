@@ -152,7 +152,7 @@ module Prometheus
     private struct LabelCache
       @data = {} of LabelSet => LabelSet
 
-      def fetch(labels : LabelSet)
+      def fetch(labels : LabelSet, &)
         @data.fetch(labels) do
           @data[labels] = yield labels
         end

@@ -72,13 +72,13 @@ describe Prometheus do
       samples = histogram.collect
 
       # Check bucket counts
-      samples.find { |s| s.name == "test_histogram_bucket" && s.labels.labels["le"] == "1.0" }.try(&.value).should eq(0)
-      samples.find { |s| s.name == "test_histogram_bucket" && s.labels.labels["le"] == "2.0" }.try(&.value).should eq(1)
-      samples.find { |s| s.name == "test_histogram_bucket" && s.labels.labels["le"] == "5.0" }.try(&.value).should eq(3)
+      samples.find { |sample| sample.name == "test_histogram_bucket" && sample.labels.labels["le"] == "1.0" }.try(&.value).should eq(0)
+      samples.find { |sample| sample.name == "test_histogram_bucket" && sample.labels.labels["le"] == "2.0" }.try(&.value).should eq(1)
+      samples.find { |sample| sample.name == "test_histogram_bucket" && sample.labels.labels["le"] == "5.0" }.try(&.value).should eq(3)
 
       # Check sum and count
-      samples.find { |s| s.name == "test_histogram_sum" }.try(&.value).should eq(8.5)
-      samples.find { |s| s.name == "test_histogram_count" }.try(&.value).should eq(3)
+      samples.find { |sample| sample.name == "test_histogram_sum" }.try(&.value).should eq(8.5)
+      samples.find { |sample| sample.name == "test_histogram_count" }.try(&.value).should eq(3)
     end
 
     it "returns the collection of all values for all label sets" do
@@ -113,8 +113,8 @@ describe Prometheus do
 
       samples = summary.collect
 
-      samples.find { |s| s.name == "test_summary_sum" }.try(&.value).should eq(12.0)
-      samples.find { |s| s.name == "test_summary_count" }.try(&.value).should eq(3)
+      samples.find { |sample| sample.name == "test_summary_sum" }.try(&.value).should eq(12.0)
+      samples.find { |sample| sample.name == "test_summary_count" }.try(&.value).should eq(3)
     end
 
     it "returns the collection of all values for all label sets" do
