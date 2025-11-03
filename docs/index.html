@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Crystal Docs 1.13.3">
-<meta name="crystal_docs.project_version" content="0.1.0">
+<meta name="generator" content="Crystal Docs 1.18.1">
+<meta name="crystal_docs.project_version" content="main-dev">
 <meta name="crystal_docs.project_name" content="prometheus">
 
 
@@ -14,7 +14,7 @@
 <script type="text/javascript" src="js/doc.js"></script>
 
   <meta name="repository-name" content="prometheus">
-  <title>prometheus 0.1.0</title>
+  <title>prometheus main-dev</title>
   <script type="text/javascript">
   CrystalDocs.base_path = "";
   </script>
@@ -45,7 +45,7 @@
       </h1>
 
       <span class="project-version">
-        0.1.0
+        main-dev
       </span>
     </div>
   </div>
@@ -64,6 +64,11 @@
   
   <li class=" " data-id="prometheus/Prometheus/Counter" data-name="prometheus::counter">
       <a href="Prometheus/Counter.html">Counter</a>
+      
+    </li>
+  
+  <li class=" " data-id="prometheus/Prometheus/DataStore" data-name="prometheus::datastore">
+      <a href="Prometheus/DataStore.html">DataStore</a>
       
     </li>
   
@@ -87,8 +92,18 @@
       
     </li>
   
-  <li class=" " data-id="prometheus/Prometheus/Metric" data-name="prometheus::metric">
+  <li class="parent " data-id="prometheus/Prometheus/Metric" data-name="prometheus::metric">
       <a href="Prometheus/Metric.html">Metric</a>
+      
+        <ul>
+  
+  <li class=" " data-id="prometheus/Prometheus/Metric/Labels" data-name="prometheus::metric::labels">
+      <a href="Prometheus/Metric/Labels.html">Labels</a>
+      
+    </li>
+  
+</ul>
+
       
     </li>
   
@@ -134,7 +149,7 @@
 </ol>
 <pre><code class="language-yaml">dependencies:
   prometheus:
-    github: pfeifferj/prometheus
+    github: cloudnative-cr/crystal-prometheus-client
     version: ~&gt; 0.1.0</code></pre>
 <ol start="2">
 <li>Run <code>shards install</code></li>
@@ -170,6 +185,20 @@ summary.observe(<span class="n">1024</span>)       <span class="c"># Observe a v
 
 <span class="c"># Get metrics in Prometheus text format</span>
 puts <span class="t">Prometheus</span>.collect</code></pre>
+<h2><a id="demo" class="anchor" href="#demo">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Demo</h2>
+<p>Check out the <a href="examples/demo.cr">demo application</a> that showcases all metric types:</p>
+<pre><code class="language-crystal">crystal examples<span class="o">/</span>demo.cr</code></pre>
+<p>The demo simulates HTTP traffic and demonstrates:</p>
+<ul>
+<li>Counters tracking requests with labels</li>
+<li>Gauges monitoring memory usage</li>
+<li>Histograms measuring response time distributions</li>
+<li>Summaries capturing request size statistics</li>
+</ul>
 <h2><a id="metric-types" class="anchor" href="#metric-types">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
@@ -271,7 +300,7 @@ output <span class="o">=</span> <span class="t">Prometheus</span>.collect</code>
   </svg>
 </a>Contributing</h2>
 <ol>
-<li>Fork it (<a href="https://github.com/pfeifferj/prometheus/fork">https://github.com/pfeifferj/prometheus/fork</a>)</li>
+<li>Fork it (<a href="https://github.com/cloudnative-cr/crystal-prometheus-client/fork">https://github.com/cloudnative-cr/crystal-prometheus-client/fork</a>)</li>
 <li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
 <li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
 <li>Push to the branch (<code>git push origin my-new-feature</code>)</li>

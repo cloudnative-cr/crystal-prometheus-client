@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Crystal Docs 1.13.3">
-<meta name="crystal_docs.project_version" content="0.1.0">
+<meta name="generator" content="Crystal Docs 1.18.1">
+<meta name="crystal_docs.project_version" content="main-dev">
 <meta name="crystal_docs.project_name" content="prometheus">
 
 
@@ -14,7 +14,7 @@
 <script type="text/javascript" src="../js/doc.js"></script>
 
   <meta name="repository-name" content="prometheus">
-  <title>Prometheus::Metric - prometheus 0.1.0</title>
+  <title>Prometheus::Metric - prometheus main-dev</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -45,7 +45,7 @@
       </h1>
 
       <span class="project-version">
-        0.1.0
+        main-dev
       </span>
     </div>
   </div>
@@ -64,6 +64,11 @@
   
   <li class=" " data-id="prometheus/Prometheus/Counter" data-name="prometheus::counter">
       <a href="../Prometheus/Counter.html">Counter</a>
+      
+    </li>
+  
+  <li class=" " data-id="prometheus/Prometheus/DataStore" data-name="prometheus::datastore">
+      <a href="../Prometheus/DataStore.html">DataStore</a>
       
     </li>
   
@@ -87,8 +92,18 @@
       
     </li>
   
-  <li class=" current" data-id="prometheus/Prometheus/Metric" data-name="prometheus::metric">
+  <li class="parent open current" data-id="prometheus/Prometheus/Metric" data-name="prometheus::metric">
       <a href="../Prometheus/Metric.html">Metric</a>
+      
+        <ul>
+  
+  <li class=" " data-id="prometheus/Prometheus/Metric/Labels" data-name="prometheus::metric::labels">
+      <a href="../Prometheus/Metric/Labels.html">Labels</a>
+      
+    </li>
+  
+</ul>
+
       
     </li>
   
@@ -121,7 +136,9 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">abstract class</span> Prometheus::<wbr>Metric
+  <span class="kind">
+    abstract class
+  </span> Prometheus::<wbr>Metric
 
 </h1>
 
@@ -148,6 +165,8 @@
 <li>Each metric type must implement <code><a href="../Prometheus/Metric.html#type%3AString-instance-method">#type</a></code> and <code><a href="../Prometheus/Metric.html#collect%3AArray%28Sample%29-instance-method">#collect</a></code> methods</li>
 </ul>
 <p>Metric implementations should be thread-safe and handle concurrent access appropriately.</p>
+
+
 
 
 
@@ -201,6 +220,7 @@
 
 
 
+  
   <h2>
     <a id="constructors" class="anchor" href="#constructors">
   <svg class="octicon-link" aria-hidden="true">
@@ -212,6 +232,11 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
+        <a href="#new%28name%3AString%2Chelp%3AString%2Clabels%3AHash%28String%2CString%29%3Dnil%29-class-method" class="signature"><strong>.new</strong>(name : String, help : String, labels : Hash(String, String) = <span class="n">nil</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#new%28name%3AString%2Chelp%3AString%2Clabels%3APrometheus%3A%3ALabelSet%3DLabelSet.new%29-class-method" class="signature"><strong>.new</strong>(name : String, help : String, labels : Prometheus::LabelSet = <span class="t">LabelSet</span>.new)</a>
         
       </li>
@@ -219,11 +244,11 @@
   </ul>
 
 
+  
 
+  
 
-
-
-
+  
   <h2>
     <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
   <svg class="octicon-link" aria-hidden="true">
@@ -233,6 +258,11 @@
     Instance Method Summary
   </h2>
   <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#collect%28io%3AIO%29%3ANil-instance-method" class="signature"><strong>#collect</strong>(io : IO) : Nil</a>
+        
+      </li>
     
       <li class="entry-summary">
         <a href="#collect%3AArray%28Sample%29-instance-method" class="signature"><strong>#collect</strong> : Array(Sample)</a>
@@ -263,37 +293,37 @@
 
 
 
-<div class="methods-inherited">
+  <div class="methods-inherited">
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+  </div>
+
   
-    
-
-
-    
-
-
-    
-
-
-    
-
-
-  
-    
-
-
-    
-
-
-    
-
-
-    
-
-
-  
-</div>
-
-
   <h2>
     <a id="constructor-detail" class="anchor" href="#constructor-detail">
   <svg class="octicon-link" aria-hidden="true">
@@ -302,6 +332,20 @@
 </a>
     Constructor Detail
   </h2>
+  
+    <div class="entry-detail" id="new(name:String,help:String,labels:Hash(String,String)=nil)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(name : String, help : String, labels : Hash(String, String) = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#new%28name%3AString%2Chelp%3AString%2Clabels%3AHash%28String%2CString%29%3Dnil%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
   
     <div class="entry-detail" id="new(name:String,help:String,labels:Prometheus::LabelSet=LabelSet.new)-class-method">
       <div class="signature">
@@ -319,11 +363,11 @@
   
 
 
+  
 
+  
 
-
-
-
+  
   <h2>
     <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
   <svg class="octicon-link" aria-hidden="true">
@@ -333,9 +377,23 @@
     Instance Method Detail
   </h2>
   
+    <div class="entry-detail" id="collect(io:IO):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>collect</strong>(io : IO) : Nil
+
+        <a class="method-permalink" href="#collect%28io%3AIO%29%3ANil-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="collect:Array(Sample)-instance-method">
       <div class="signature">
-        abstract 
+        
         def <strong>collect</strong> : Array(<a href="../Prometheus/Sample.html">Sample</a>)
 
         <a class="method-permalink" href="#collect%3AArray%28Sample%29-instance-method">#</a>
@@ -403,6 +461,7 @@
       </div>
     </div>
   
+
 
 
 </div>
